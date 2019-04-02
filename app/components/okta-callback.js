@@ -1,0 +1,1 @@
+export { default } from 'ember-okta/components/okta-callback';
