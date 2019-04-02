@@ -6,7 +6,7 @@ export default Controller.extend({
   actions: {
     logout() {
       const authService = this.get('auth');
-      authService.logout('authenticated');
+      authService.logout();
     },
   },
 });

@@ -8,7 +8,9 @@ export default Route.extend({
   async beforeModel() {
     this._super(...arguments);
 
-    const isAuthenticated = await this.auth.isAuthenticated();
+    const authService = this.auth;
+
+    const isAuthenticated = await authService.isAuthenticated();
     if (isAuthenticated) {
       return true;
     }
@@ -16,8 +18,14 @@ export default Route.extend({
     const route = this.router.currentRoute;
 
     // TODO: Save the model also? Could possibly use urlFor https://api.emberjs.com/ember/3.8/classes/RouterService/methods?anchor=urlFor
-    this.auth.setFromRoute(route.name, route.queryParams);
+    authService.setFromRoute(route.name, route.queryParams);
 
-    this.auth.loginRedirect();
+    const onAuthRequired = authService.getOktaConfig().onAuthRequired;
+
+    if (onAuthRequired) {
+      onAuthRequired(authService, this.router);
+    } else {
+      authService.loginRedirect();
+    }
   },
 });
