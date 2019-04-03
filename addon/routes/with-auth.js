@@ -18,9 +18,14 @@ export default Route.extend({
     const route = this.router.currentRoute;
 
     // TODO: Save the model also? Could possibly use urlFor https://api.emberjs.com/ember/3.8/classes/RouterService/methods?anchor=urlFor
-    authService.setFromRoute(route.name, route.queryParams);
+    if (route) {
+      authService.setFromRoute(route.name, route.queryParams);
+    } else {
+      authService.setFromRoute('index');
+    }
 
-    const onAuthRequired = authService.getOktaConfig().onAuthRequired;
+    const onAuthRequired =
+      authService.getOktaConfig().onAuthRequired || authService.onAuthRequired;
 
     if (onAuthRequired) {
       onAuthRequired(authService, this.router);

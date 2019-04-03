@@ -19,5 +19,9 @@
         {{/if}}
     </nav>
 
-    <main class="app-content">{{outlet}}</main>
+    <main class="app-content">
+        <input type="checkbox" id="redirect-auth" value={{redirect}} onclick={{action "UpdateRedirect"}}>
+        <label for="redirect-auth">Redirect for login</label>
+        {{outlet}}
+    </main>
 </div>

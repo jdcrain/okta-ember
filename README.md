@@ -25,6 +25,7 @@ Usage
 To configure the addon to work with Okta, place the following into your config/environment.js
 
 ```js
+// config/environment.js
 ENV['okta'] = {
     issuer: 'https://{{OktaDomain}}.okta.com/oauth2/default',
     clientId: 'clientId',
@@ -90,7 +91,39 @@ The `okta-login-redirect` component redirects the user to the specified Okta org
 
 #### Using a Custom login-page
 
-TODO: allow for configuration of onAuthReqyired another way. Currently only allowed to set it in environment.js
+`ember-okta` supports the session token redirect flow for custom login pages. For more information, [see the basic Okta Sign-in Widget functionality](https://github.com/okta/okta-signin-widget#new-oktasigninconfig).
+
+To handle the session-token redirect flow, you can modify the unauthentication callback functionality by changing the `onAuthRequired` property of the `auth` service:
+
+```js
+// application.js
+
+import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
+
+export default Controller.extend({
+  auth: service(),
+
+  init() {
+    this._super(...arguments);
+    const authService = this.auth;
+    authService.set('onAuthRequired', authService => {
+      authService.router.transitionTo('login');
+    });
+  },
+});
+```
+
+Alternatively, set this behavior globally by adding it to your configuration object in the environment.js file:
+
+```js
+// environment.js
+ENV['okta'] = {
+  issuer: 'https://{{OktaDomain}}.okta.com/oauth2/default',
+  ...
+  onAuthRequired: onAuthRequired,
+};
+```
 
 ### `auth` Service
 

@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('authenticated');
   this.route('implicit-callback', { path: 'implicit/callback' });
+  this.route('login');
 });
 
 export default Router;
