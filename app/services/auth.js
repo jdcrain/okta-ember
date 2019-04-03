@@ -1,1 +1,1 @@
-export { default } from 'ember-okta/services/auth';
+export { default } from 'okta-ember/services/auth';

@@ -1,4 +1,4 @@
-ember-okta
+okta-ember
 ==============================================================================
 An Ember.js addon that wraps [Okta Auth JS](https://github.com/okta/okta-auth-js), based off of the work done in [Okta Angular SDK](https://github.com/okta/okta-oidc-js/tree/master/packages/okta-angular). [Okta Auth JS](https://github.com/okta/okta-auth-js) uses Okta's [OpenID Connect API](https://developer.okta.com/docs/api/resources/oidc.html).
 
@@ -15,7 +15,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-okta
+ember install okta-ember
 ```
 
 
@@ -42,7 +42,7 @@ ENV['okta'] = {
 - `redirectUri` **(required)**: Where the callback is hosted
 - `scope` *(optional)*: Reserved for custom claims to be returned in the tokens
 - `responseType` *(optional)*: Desired token grant types
-- `onAuthRequired` *(optional)*: Accepts a callback to make a decision when authentication is required. If not supplied, `ember-okta` will redirect directly to Okta for authentication.
+- `onAuthRequired` *(optional)*: Accepts a callback to make a decision when authentication is required. If not supplied, `okta-ember` will redirect directly to Okta for authentication.
 - `storage` *(optional)*:
   Specify the type of storage for tokens.
   The types are:
@@ -57,7 +57,7 @@ The `WithAuth` route will check that a valid `accessToken` is stored before the 
 ```js
 // routes/my-route.js
 
-import WithAuth from 'ember-okta/routes/with-auth';
+import WithAuth from 'okta-ember/routes/with-auth';
 
 export default WithAuth.extend({});
 ```
@@ -91,7 +91,7 @@ The `okta-login-redirect` component redirects the user to the specified Okta org
 
 #### Using a Custom login-page
 
-`ember-okta` supports the session token redirect flow for custom login pages. For more information, [see the basic Okta Sign-in Widget functionality](https://github.com/okta/okta-signin-widget#new-oktasigninconfig).
+`okta-ember` supports the session token redirect flow for custom login pages. For more information, [see the basic Okta Sign-in Widget functionality](https://github.com/okta/okta-signin-widget#new-oktasigninconfig).
 
 To handle the session-token redirect flow, you can modify the unauthentication callback functionality by changing the `onAuthRequired` property of the `auth` service:
 
@@ -127,7 +127,7 @@ ENV['okta'] = {
 
 ### `auth` Service
 
-You can expose the `auth` service that is included in `ember-okta` in routes, controllers, or components. The following example shows how to use the login and logout buttons in a controller:
+You can expose the `auth` service that is included in `okta-ember` in routes, controllers, or components. The following example shows how to use the login and logout buttons in a controller:
 ```js
 // sample-controller.js
 import Controller from '@ember/controller';

@@ -1,1 +1,1 @@
-export { default } from 'ember-okta/components/okta-login-redirect';
+export { default } from 'okta-ember/components/okta-login-redirect';

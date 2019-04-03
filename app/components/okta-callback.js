@@ -1,1 +1,1 @@
-export { default } from 'ember-okta/components/okta-callback';
+export { default } from 'okta-ember/components/okta-callback';

@@ -1,3 +1,3 @@
-import WithAuth from 'ember-okta/routes/with-auth';
+import WithAuth from 'okta-ember/routes/with-auth';
 
 export default WithAuth.extend({});

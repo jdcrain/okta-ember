@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-okta`
+* `cd okta-ember`
 * `npm install`
 
 ## Linting

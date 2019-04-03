@@ -1,1 +1,1 @@
-export { default } from 'ember-okta/templates/with-auth';
+export { default } from 'okta-ember/templates/with-auth';
