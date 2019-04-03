@@ -50,9 +50,9 @@ ENV['okta'] = {
   - [`sessionStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)
   - [`cookie`](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
 
-### WithAuth Route
+### `WithAuth` Route
 
-The WithAuth route will check that a valid `accessToken` is stored before the user is allowed to access the route. If a valid `accessToken` is not found, then the `onAuthRequired` callback will be called. To use the route:
+The `WithAuth` route will check that a valid `accessToken` is stored before the user is allowed to access the route. If a valid `accessToken` is not found, then the `onAuthRequired` callback will be called. To use the route:
 
 ```js
 // routes/my-route.js
@@ -74,7 +74,7 @@ The `okta-callback` component is used to capture token values returned in the UR
         this.route('implicit-callback', { path: 'implicit/callback' });
     });
     ```
-3. Create a template for the route: run `ember g template implicit-callbac
+3. Create a template for the route: run `ember g template implicit-callback`
 4. Update the template file for the `implicit-callback` route:
     ```hbs
     <!-- templates/implicit-callback.hbs -->
@@ -216,3 +216,7 @@ License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
+
+[ID Token Claims]: https://developer.okta.com/docs/api/resources/oidc#id-token-claims
+[UserInfo endpoint]: https://developer.okta.com/docs/api/resources/oidc#userinfo
+[Customizing Your Authorization Server]: https://developer.okta.com/authentication-guide/implementing-authentication/set-up-authz-server
