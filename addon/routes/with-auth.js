@@ -5,7 +5,7 @@ export default Route.extend({
   auth: service(),
   router: service(),
 
-  async beforeModel() {
+  async beforeModel(transition) {
     this._super(...arguments);
 
     const authService = this.auth;
@@ -15,7 +15,7 @@ export default Route.extend({
       return true;
     }
 
-    const route = this.router.currentRoute;
+    const route = transition.to || this.router.currentRoute;
 
     // TODO: Save the model also? Could possibly use urlFor https://api.emberjs.com/ember/3.8/classes/RouterService/methods?anchor=urlFor
     if (route) {
